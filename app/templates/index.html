@@ -1,0 +1,65 @@
+{% extends 'base.html'%}
+{% import 'macros.html' as macro%}
+
+{% block styles%}
+{{ super() }}
+<link href="https://fonts.googleapis.com/css?family=Akronim|Bellefair|Joti+One" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+{{super}}
+    <div class="container" style="background-color:gainsboro; padding:20px; margin-top:0px; padding-top:40px; padding-bottom:400px;">
+        <div class="row" style="text-align:center; font-size:30px;">
+            <span style="font-size:40px; font-family: 'Akronim', cursive;">Personal BloG</span>
+        </div>
+        <!-- <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-3"> 
+                    <a href="{{url_for('main.interview')}}" style="font-family: 'Joti One', cursive; font-size:20px;">
+                        <br>
+                        Inteview Pitches
+                    </a>
+                    <br>
+                    <a href="{{url_for('main.pick_up_line')}}" style="font-family: 'Joti One', cursive; font-size:20px;">
+                        <br>
+                        Pick Up Lines
+                    </a>
+                    <br>
+                    <a href="{{url_for('main.promotion')}}" style="font-family: 'Joti One', cursive; font-size:20px;">
+                        <br>
+                        Promotion Pitches
+                    </a>
+                    <br>
+                    <a href="{{url_for('main.product')}}" style="font-family: 'Joti One', cursive; font-size:20px;">
+                        <br>
+                        Product Pitches
+                    </a>
+                    <br>
+        </div> -->
+        <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 col-xl-9">
+            <div class="panel style="style="border: 3px solid #f2f2f2; padding:20px; margin-top:10px;">
+                <p style="font-family: 'Bellefair', serif; font-size:20px;">Write your blog in any of the categories to the left and let other user vote,comment and delete where necessary.Please also feel free to comment and vote onany blog posted by other people </p>
+                
+                <div style="text-align:center;">
+                    <a href="{{url_for('main.new_blog)}}">
+                        <br>
+                        <span >Add a new Blog</span>
+                    </a>
+
+                </div>
+                <a href="{{url_for('main.get_all_blogs')}}"> View all blogs</a>
+            
+            </div>
+            
+        </div>
+    </hr>
+        <div class="all-pitches">
+            <span style="color:gainsboro;">All blogs are displayed below</span>
+                <hr> 
+                {{macro.displayBlogs(blogs)}}
+            
+
+        </div>
+
+    </div>
+
+
+{% endblock %}

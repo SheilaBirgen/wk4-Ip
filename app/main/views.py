@@ -24,9 +24,9 @@ def search(blog_name):
 
     return render_template('search.html',blogs = searched_blog)
 
-@main.route('/pitch/new/', methods = ['GET','POST'])
+@main.route('/blog/new/', methods = ['GET','POST'])
 @login_required
-def new_blog:
+def new_blog(new_blog):
     '''
     Function that creates new pitches
     '''

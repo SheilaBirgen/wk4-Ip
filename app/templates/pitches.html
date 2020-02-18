@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block content%}
+
+{% for pitch in pitches %}
+
+    <ul>
+        <li>{{pitch.pitch}}</li>
+    </ul>
+
+{% endfor %}
+
+   
+{% endblock %}
