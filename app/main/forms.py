@@ -4,7 +4,6 @@ from wtforms.validators import DataRequired
 
 class CommentsForm(FlaskForm):
     comment =TextAreaField('comment',validators=[(Required)])
-    # <i class="fa fa-trash" aria-hidden="true"></i>
     submit = SelectField
 
 class UpdateFrofile(FlaskForm):
