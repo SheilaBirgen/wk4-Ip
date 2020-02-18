@@ -64,6 +64,60 @@ def update_pic(uname):
     if 'photo' in request.files:
         filename = photos.save(request.files['photo'])
         path = f'photos/{filename}'
-        user.profile_pic_path = path 
+        user.profile_path = path 
         db.session.commit()
     return redirect(url_for('main.profile',uname=uname))
+
+@main.route('/user/<uname>')
+def profile(uname):
+    user = User.query.filter_by(username = uname).first()
+
+    if user is None:
+        abort(404)
+
+    return render_template("profile/profile.html", user = user)
+
+@main.route('/user/<uname>/update',methods = ['GET','POST'])
+@login_required
+def update_profile(uname):
+    user = User.query.filter_by(username = uname).first()
+    if user is None:
+        abort(404)
+
+    form = UpdateProfile()
+
+    if form.validate_on_submit():
+        user.bio = form.bio.data
+
+        db.session.add(user)
+        db.session.commit()
+
+        return redirect(url_for('.profile',uname=user.username))
+    
+    return render_template('profile/update.html',form =form)
+
+@main.route('/view/comment/<int:id>')
+def view_comments(id):
+    '''
+    Function that returs  the comments belonging to a particular pitch
+    '''
+    comments = Comment.get_comments(id)
+    return render_template('view_comments.html',comments = comments, id=id)
+
+
+
+@main.route('/test/<int:id>')  
+def test(id):
+    '''
+    this is route for basic testing
+    '''
+    pitch =Pitch.query.filter_by(id=1).first()
+    return render_template('test.html',pitch= pitch)
+
+
+@main.route('/all_blogs')  
+def get_all_blogs():
+    
+    blogs = Blog.query.all()
+    
+    return render_template('blogs.html', blogs= blogs)
