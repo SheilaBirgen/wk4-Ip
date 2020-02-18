@@ -7,22 +7,22 @@
 
     <!-- Poster background -->
     <div class="row">
-            <h3>Pitch ID:{{ found_pitch.id }}</h3>
+            <h3>Blog ID:{{ found_blog.id }}</h3>
 
-            <p> {{ found_pitch.pitch }}</p>
+            <p> {{ found_blog.blog }}</p>
 
-            <a href="/pitch/comments/new/{{found_pitch.id}}"> Comment</a>
+            <a href="/blog/comments/new/{{found_blog.id}}"> Comment</a>
     </div>
     <div class="row">
             
-                    <h1>Comments on this Pitch</h1>
+                    <h1>Comments on this Blog</h1>
                     <hr>
             
-                    {% if pitch_comments %}
-                        {{ macro.displayComments(pitch_comments) }}
+                    {% if blog_comments %}
+                        {{ macro.displayComments(blog_comments) }}
             
                     {% else%}
-                        <h3 class="text-center">This Pitch has no Comments </h3>
+                        <h3 class="text-center">This Blog has no Comments </h3>
                     {% endif %}
 
                 </div>

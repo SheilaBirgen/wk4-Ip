@@ -4,10 +4,10 @@
 
 {% block content%}
 
-{% for pitch in pitches %}
+{% for blog in blogs %}
 
     <ul>
-        <li>{{pitch.pitch}}</li>
+        <li>{{blog .blog}}</li>
     </ul>
 
 {% endfor %}

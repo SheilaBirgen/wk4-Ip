@@ -28,7 +28,7 @@ def save_comment(self):
 
     @classmethod
     def get_comments(cls,id):
-        reviews = Comment.query.filter_by(pitch_id=id).all()
+        reviews = Comment.query.filter_by(blog_id=id).all()
         return comments
 
     @property
@@ -45,9 +45,9 @@ def save_comment(self):
     def __repr__(self):
         return f'User {self.username}'
 
-class Pitch(db.Model):
+class Blog(db.Model):
     '''
-    blog class to define Pitch Objects
+    blog class to define Blog Objects
     '''
     __tablename__ = 'blog'
 
@@ -55,7 +55,7 @@ class Pitch(db.Model):
     blog = db.Column(db.String)
     # category_id = db.Column(db.Integer)
     # user_id = db.Column(db.Integer,db.ForeignKey("users.id"))
-    comments = db.relationship('Comment',backref = 'pitch',lazy="dynamic")
+    comments = db.relationship('Comment',backref = 'blog',lazy="dynamic")
         
 
     def save_blog(self):
@@ -77,7 +77,7 @@ class Pitch(db.Model):
     @classmethod
     def get_blogs_by_category(cls,cat_id):
         '''
-        Function that queries the databse and returns pitches based on the
+        Function that queries the databse and returns blogs based on the
         category passed to it
         '''
         return Blog.query.filter_by(category_id= cat_id)
@@ -91,7 +91,7 @@ class Comment(db.Model):
 
     id = db.Column(db.Integer,primary_key = True)
     comment= db.Column(db.String)
-    pitch_id = db.Column(db.Integer,db.ForeignKey('pitch.id'))
+    blog_id = db.Column(db.Integer,db.ForeignKey('blog.id'))
     username =  db.Column(db.String)
     votes= db.Column(db.Integer)
     
