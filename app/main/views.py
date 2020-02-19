@@ -1,11 +1,11 @@
 from flask import render_template, request, redirect, url_for,abort
 from . import main
-from .forms import CommentsForm, UpdateFrofile, BlogForm,UpvoteForm
-from .models import User, Blog, CommentsForm
+from .forms import CommentsForm,BlogForm,UpvoteForm
+from app.models import User, Post, Comment, Quote
 from flask_login import login_required, current_user
 from .. import db
 
-@main('/')
+@main.route('/')
 def index():
     '''
     view root page of the app which returns the homepage of thapp
