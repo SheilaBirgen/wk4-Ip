@@ -1,21 +1,25 @@
 from flask import render_template, request, redirect, url_for,abort
 from . import main
-from .forms import CommentsForm,BlogForm,UpvoteForm
-from app.models import User, Post, Comment, Quote
+from .forms import UpdateFrofile,BlogForm
+from app.models import User, Blog, Comment
 from flask_login import login_required, current_user
 from .. import db
+from ..email import mail_message
+from ..request import get_quotes
 
 @main.route('/')
 def index():
     '''
     view root page of the app which returns the homepage of thapp
     '''
-    title = 'Welcome to blog post'
+    quotes = get_quotes()
+    page = request.args.get('page',1,type =int)
+    blogs = Blog.query.order_by(Blog.posted.desc()).paginate(page = page)
+    return render_template('index.html',quote=quotes,blogs=blogs)
 
-    return render_template('index.html', title =title)
-
-@main.route('/search/<blog_name>')
-def search(blog_name):
+@main.route('/new_post',methods=['GET','POST'])
+@login_required
+def new_blog():
     '''
     View function to display the search result
     '''
