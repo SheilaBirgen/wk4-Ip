@@ -5,14 +5,14 @@ from app.models import User, Blog, Comment
 from flask_login import login_required, current_user
 from .. import db
 from ..email import mail_message
-from app.request import get_quote
+from ..request import get_quotes
 
 @main.route('/')
 def index():
     '''
     view root page of the app which returns the homepage of thapp
     '''
-    quote= get_quote()
+    quote= get_quotes()
     page = request.args.get('page',1,type =int)
     blogs = Blog.query.order_by(Blog.posted.desc()).paginate(page = page)
     return render_template('index.html',quote=quote,blogs=blogs)
