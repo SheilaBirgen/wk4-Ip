@@ -13,8 +13,6 @@ def index():
     view root page of the app which returns the homepage of thapp
     '''
     quote= get_quote()
-    # author = quote.author
-    # rand_quote = quote.quote
     page = request.args.get('page',1,type =int)
     blogs = Blog.query.order_by(Blog.posted.desc()).paginate(page = page)
     return render_template('index.html',quote=quote,blogs=blogs)

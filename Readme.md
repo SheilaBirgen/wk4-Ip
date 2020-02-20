@@ -43,6 +43,9 @@ Open the application on your browser `127.0.0.1:5000`.
 ## Description
 A blog post is app that allows a user to post what is in their mind,comment and delete on other people's post 
 
+## Deployment
+https://thawing-beyond-11842.herokuapp.com/
+
 ## BDD
 | Behaviour             |                Input                |                                                                       Output |
 | :-------------------- | :---------------------------------: | ---------------------------------------------------------------------------: |
@@ -60,7 +63,7 @@ You can reach out to me through the github account SheilaBirgen
 or on my email as jeronobergen@gmail.com
 
 ## CodeBeat Badge
-
+[![codebeat badge](https://codebeat.co/badges/aa9048aa-9fc1-4814-8289-3d2dbed0c9a8)](https://codebeat.co/projects/github-com-sheilabirgen-wk4-ip-master)
 ## License
 |@2019 Sheila Birgen |
 [![GitHub license](https://img.shields.io/github/license/Naereen/StrapDown.js.svg)](https://github.com/Naereen/StrapDown.js/blob/master/LICENSE)

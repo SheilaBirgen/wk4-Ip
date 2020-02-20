@@ -2,22 +2,23 @@
 import urllib.request, json
 from .models import Quote
 
-def get_quote():
-    url="http://quotes.stormconsultancy.co.uk/random.json"
-    
-    with urllib.request.urlopen(url) as url:
-        quote_data=url.read()
-        quote_response=json.loads(quote_data)
-        return quote_data
+base_url = None
 
+def configure_request(app):
+    global base_url
+    base_url = app.config['API_BASE_URL']
     
-    if quote_data:
-        author = quote_data.author 
-        quote = quote_data.quote 
+def get_quotes():
     
-    rand_quote = Quote(author, quote)
+    get_quotes_url = base_url.format
+    print(get_quotes_url)
+    
+    with urllib.request.urlopen('http://quotes.stormconsultancy.co.uk/random.json') as url:
+        get_quotes_data = url.read()
+        get_quotes_response = json.loads(get_quotes_data)
+        
+        return get_quotes_response
 
-    return rand_quote
     
     
     

@@ -3,6 +3,7 @@ from werkzeug.security import generate_password_hash,check_password_hash
 from flask_login import UserMixin
 from . import login_manager
 from datetime import datetime
+from flask import request
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -113,6 +114,7 @@ class Subscriber(db.Model):
         return "Subscriber{}".format(self.email)
 
 class Quote:
-    def __init__(self,author,quote):
+    def __init__(self,id,author,quote):
+        self.id = id
         self.author = author
         self.quote = quote
