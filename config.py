@@ -1,7 +1,7 @@
 import os
 class Config:
     SECRET_KEY = os.environ.get("SECRET_KEY")
-    SQLALCHEMY_DATABASE_URI = os.environ.get(" SQLALCHEMY_DATABASE_URI")
+   
 
     MAIL_SERVER = 'smtp.googlemail.com'
     MAIL_PORT = 587
@@ -32,7 +32,7 @@ class DevConfig(Config):
     Args:
         Config: The parent configuration class with General configuration settings
     '''
-    
+    SQLALCHEMY_DATABASE_URI ='postgresql+psycopg2://birgen:admin@localhost/blogpost'
     DEBUG = True
 
 config_options = {
