@@ -39,3 +39,7 @@ python3.6 manage.py server
 ```
 
 Open the application on your browser `127.0.0.1:5000`.
+
+## Description
+A blog post is app that allows a user to post what is in their mind,comment and delete on other people's post 
+
