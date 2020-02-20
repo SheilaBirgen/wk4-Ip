@@ -13,6 +13,8 @@ def index():
     view root page of the app which returns the homepage of thapp
     '''
     quote= get_quote()
+    author = quote.author
+    rand_quote = quote.quote
     page = request.args.get('page',1,type =int)
     blogs = Blog.query.order_by(Blog.posted.desc()).paginate(page = page)
     return render_template('index.html',quote=quote,blogs=blogs)
@@ -23,7 +25,7 @@ def new_blog():
     '''
     View function to display the search result
     '''
-    form = CreateBlog()
+    form = BlogForm()
     if form.validate_on_submit():
         title = form.title.data
         user_id = current_user._get_current_object().id
@@ -68,7 +70,7 @@ def del_post(blog_id):
     db.session.commit()
 
     flash('Blog Deleted Successfully')
-    return redirect(url_for('sign_in.html'))
+    return redirect(url_for('main.index'))
 
 @main.route('/profile',methods=['GET','POST'])
 def profile():
