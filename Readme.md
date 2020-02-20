@@ -51,3 +51,11 @@ A blog post is app that allows a user to post what is in their mind,comment and 
 | Select Login          |    **Username** and **password**    | Redirect to page with app pitches based on categories and commenting section |
 | Select comment button |             **Comment**             |             Form that you input your comment |
 | Click on submit       |                                     |       Redirect to all comments tamplate with your comment and other comments |
+
+## Known Bugs
+There are no known bugs at the moment
+
+## Support and contact Details
+You can reach out to me through the github account SheilaBirgen
+or on my email as jeronobergen@gmail.com
+
