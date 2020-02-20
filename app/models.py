@@ -43,7 +43,7 @@ class User(db.Model,UserMixin):
         db.session.commit()
 
     def __repr__(self):
-        return f'User{self.username}'
+        return "User: %s " %str(self.username)
 
 
 class Blog(db.Model):
@@ -70,7 +70,7 @@ class Blog(db.Model):
         return blog
 
     def __repr__(self):
-        return f'Blog {self.title}'
+        return "Blog {} {}".format(self.title, self.content)
 
 
 class Comment(db.Model):
@@ -96,7 +96,7 @@ class Comment(db.Model):
         return comment
 
     def __repr__(self):
-        return f'Comment {self.comment}' 
+        return "Comment {}".format(self.comment)
 
 
 class Subscriber(db.Model):
@@ -110,7 +110,7 @@ class Subscriber(db.Model):
         db.session.commit()
 
     def __repr__(self):
-        return f'Subscriber {self.email}'
+        return "Subscriber{}".format(self.email)
 
 class Quote:
     def __init__(self,author,quote):
